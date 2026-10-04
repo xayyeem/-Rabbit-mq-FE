@@ -1,0 +1,145 @@
+.page {
+  min-height: 100vh;
+  padding: 30px;
+  background: #f5f6f8;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.header p {
+  color: #777;
+}
+
+.form-card,
+.queue-card {
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  display: inline-block;
+  width: 30%;
+  margin-right: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.generate-button {
+  margin-top: 25px;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #1976d2;
+  color: white;
+  cursor: pointer;
+}
+
+.generate-button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.queue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.queue-header h2 {
+  margin: 0;
+}
+
+.queue-header p {
+  color: #777;
+}
+
+.count {
+  padding: 8px 15px;
+  background: #eef4ff;
+  border-radius: 20px;
+  color: #1976d2;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 13px;
+  background: #f7f7f7;
+}
+
+td {
+  padding: 13px;
+  border-bottom: 1px solid #eee;
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.queue {
+  background: #fff4d6;
+  color: #9a6a00;
+}
+
+.status.processing {
+  background: #e5f1ff;
+  color: #1976d2;
+}
+
+.status.completed {
+  background: #e4f7e9;
+  color: #188038;
+}
+
+.download-button {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #188038;
+  color: white;
+  cursor: pointer;
+}
+
+.download-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.empty {
+  text-align: center;
+  padding: 30px;
+  color: #888;
+}

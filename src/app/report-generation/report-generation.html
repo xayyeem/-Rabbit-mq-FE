@@ -1,0 +1,181 @@
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Report Generation</h1>
+    <p>Generate reports and track their processing status</p>
+  </div>
+
+  <!-- Generate Report Card -->
+  <div class="form-card">
+
+    <h2>Generate Report</h2>
+
+    <div class="form-row">
+
+      <!-- Report Name -->
+      <div class="form-group">
+        <label>Report Name</label>
+
+        <input
+          type="text"
+          [(ngModel)]="reportName"
+          placeholder="Enter report name">
+      </div>
+
+      <!-- Report Type -->
+      <div class="form-group">
+        <label>Report Type</label>
+
+        <select [(ngModel)]="reportType">
+          <option value="Excel">Excel</option>
+          <option value="PDF">PDF</option>
+        </select>
+      </div>
+
+      <!-- Payment Type -->
+      <div class="form-group">
+        <label>Payment Type</label>
+
+        <select [(ngModel)]="paymentType">
+          <option value="Unpaid">Unpaid</option>
+          <option value="Paid">Paid</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="button-container">
+
+      <button
+        class="generate-button"
+        [disabled]="isGenerating"
+        (click)="generateReport()">
+
+        @if (isGenerating) {
+          Queuing...
+        } @else {
+          Generate Report
+        }
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- Queue Section -->
+  <div class="queue-card">
+
+    <div class="queue-header">
+
+      <div>
+        <h2>Queued Requests</h2>
+
+        <p>
+          Track your report generation requests
+        </p>
+      </div>
+
+      <div class="request-count">
+        {{ requests.length }} Requests
+      </div>
+
+    </div>
+
+
+    <!-- Table -->
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Request ID</th>
+            <th>Report</th>
+            <th>Status</th>
+            <th>Requested On</th>
+            <th>Action</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          @for (request of requests; track request.requestId) {
+
+            <tr>
+
+              <td>
+                <span class="request-id">
+                  {{ request.requestId }}
+                </span>
+              </td>
+
+              <td>
+                {{ request.reportName }}
+              </td>
+
+              <td>
+
+                <span
+                  class="status"
+                  [class.queue]="request.status === 'In-Queue'"
+                  [class.processing]="request.status === 'Processing'"
+                  [class.completed]="request.status === 'Completed'">
+
+                  {{ request.status }}
+
+                </span>
+
+              </td>
+
+              <td>
+                {{ request.requestedOn | date:'dd MMM yyyy, hh:mm a' }}
+              </td>
+
+              <td>
+
+                <button
+                  class="download-button"
+                  [disabled]="request.status !== 'Completed'"
+                  (click)="downloadReport(request)">
+
+                  Download
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          }
+
+          @empty {
+
+            <tr>
+
+              <td
+                colspan="5"
+                class="empty">
+
+                No report requests found.
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
